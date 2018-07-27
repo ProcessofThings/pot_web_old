@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite;
 use Mojo::Redis2;
+use Data::Dumper;
 
 # Documentation browser under "/perldoc"
 plugin 'PODRenderer';
@@ -18,7 +19,9 @@ get '/' => sub {
   my $file = $c->req->url->to_abs;
   my $id;
   if ($redis->exists('url_'.$host)) {
-		$id = $redis->get('url_'.$host)
+		$id = $redis->get('url_'.$host);
+		print Dumper($id);
+		$file = "index.html";
   } else {
 		$id = $ipfshash;
 		$file = "index.html";
