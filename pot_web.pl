@@ -1,11 +1,13 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite;
 use Mojo::Redis2;
-use Data::Dumper;
+use Mojo::ACME
+
 
 # Documentation browser under "/perldoc"
 plugin 'PODRenderer';
 plugin 'proxy';
+plugin 'ACME';
 
 my $redis = Mojo::Redis2->new;
 my $ipfshash = "QmWXWYSf6DMTS9WceCuLYoCK8GkHbNQzZfsy2BD8oNpYm3";
@@ -20,7 +22,6 @@ get '/' => sub {
   my $id;
   if ($redis->exists('url_'.$host)) {
 		$id = $redis->get('url_'.$host);
-		print Dumper($id);
 		$file = "index.html";
   } else {
 		$id = $ipfshash;
