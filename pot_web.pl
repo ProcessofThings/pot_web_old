@@ -7,7 +7,7 @@ plugin 'PODRenderer';
 plugin 'proxy';
 
 my $redis = Mojo::Redis2->new;
-my $ipfshash = "QmcXusLcYAYDstxGmzs5iQywBKSjMHFGLkT6RzHMH9xgZk";
+my $ipfshash = "QmZY7N6cUydVnBz9DdNh77e7NqRWkKw9JgvPZ2hssHPijg";
 
 app->config(hypnotoad => {listen => ['http://*:9080'], pid_file => '/home/node/run/pot_web.pid'});
 
